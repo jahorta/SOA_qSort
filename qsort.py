@@ -223,7 +223,10 @@ def main():
             method = 'action_queue'
             klist_out, slist_out = qsort.qsort_median_of_three(keylist=klist_in.copy(), sortlist=slist_in.copy(),
                                                                comparator=method)
-            print(f'\nLists sorted:\nInput:\t{klist_in}\n\t\t{slist_in}\nOutput:\t{klist_out}\n\t\t{slist_out}')
+            print(f'\nList sorted:')
+            for i in range(len(klist_out)):
+                print(f'  id:\t{klist_out[i]}\t-\t{slist_out[i]}')
+            print('Actions performed from bottom to top in battle')
             while True:
                 l = input('\nPlease select one of the following options:\n(1) Start new array\n(2) Modify previous array\n(3) Quit\n')
                 if l not in ('1', '2', '3'):
