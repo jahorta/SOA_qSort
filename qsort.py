@@ -123,12 +123,12 @@ def main():
 
         if state == 1:
             os.system('cls')
-            print('Current combatant array:')
+            print('\nCurrent combatant array:')
             for i in range(len(klist_in)):
                 print(f'  id:\t{klist_in[i]}\t-\t{slist_in[i]}')
             i = input('\nPlease select one of the following options:\n(1) Add a combatant\n(2) Modify a combatant\n(3) Remove a combatant\n(4) Run Simulation\n(5) Quit\n')
             if i not in ('1', '2', '3', '4'):
-                print('Invalid selection')
+                print('\nInvalid selection')
                 sleep(1)
                 continue
             if i == '5':
@@ -138,25 +138,25 @@ def main():
                     print('No combatants present, unable to modify a  combatant')
                     sleep(1)
                     continue
-                j = input('Which combatant would you like to modify?\n')
+                j = input('\nWhich combatant would you like to modify?\n')
                 if not j.isnumeric():
-                    print('Invalid selection, please enter a number between 0 and 11 inclusive')
+                    print('\nInvalid selection, please enter a number between 0 and 11 inclusive')
                     sleep(1)
                     continue
                 j = int(j)
                 if j not in sort_dict.keys():
-                    print(f'Invalid selection, {j} is not a current combatant')
+                    print(f'\nInvalid selection, {j} is not a current combatant')
                     sleep(1)
                     continue
                 while True:
-                    s = input(f'Please enter the adjustedQuick value for {j}:\n')
+                    s = input(f'\nPlease enter the adjustedQuick value for {j}:\n')
                     if not s.isnumeric():
-                        print('Invalid selection')
+                        print('\nInvalid selection')
                         sleep(1)
                         continue
                     s = int(s)
                     if 0 > s:
-                        print(f'Invalid entry: {s} is less than zero')
+                        print(f'\nInvalid entry: {s} is less than zero')
                         sleep(1)
                         continue
                     break
@@ -165,12 +165,12 @@ def main():
 
             elif i == '3':
                 if len(klist_in) == 0:
-                    print('No combatants present, unable to remove combatant')
+                    print('\nNo combatants present, unable to remove combatant')
                     sleep(1)
                     continue
-                j = input('Which combatant would you like to remove?\n')
+                j = input('\nWhich combatant would you like to remove?\n')
                 if not j.isnumeric():
-                    print('Invalid selection')
+                    print('\nInvalid selection')
                     sleep(1)
                     continue
 
@@ -213,6 +213,10 @@ def main():
                 sort_dict[k] = s
                 populate_sortlists()
             else:
+                if len(sort_dict) < 2:
+                    print(f'Unable to sort less than 2 combatants')
+                    sleep(1)
+                    continue
                 state = 2
 
         if state == 2:
@@ -221,9 +225,9 @@ def main():
                                                                comparator=method)
             print(f'\nLists sorted:\nInput:\t{klist_in}\n\t\t{slist_in}\nOutput:\t{klist_out}\n\t\t{slist_out}')
             while True:
-                l = input('Please select one of the following options:\n(1) Start new array\n(2) Modify previous array\n(3) Quit\n')
+                l = input('\nPlease select one of the following options:\n(1) Start new array\n(2) Modify previous array\n(3) Quit\n')
                 if l not in ('1', '2', '3'):
-                    print(f'Invalid selection', end='\r')
+                    print(f'\nInvalid selection', end='\r')
                     sleep(1)
                     continue
                 break
